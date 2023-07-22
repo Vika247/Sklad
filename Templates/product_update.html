@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать товар{% endblock %}
+
+{% block header %}
+<center>Редактировать товар</center>
+{% endblock %}
+
+{% block content %}
+<center>
+    <form method="POST" action="update_prod">
+        {% csrf_token %}
+       <!-- <label for="prod_name">Введите номер сотрудника: </label>-->
+        <input id="prod_name" type="text" name="name_field" value="{{prod.name}}">
+        <input id="prod_category" type="text" name="category_field" value="{{prod.category}}">
+        <input id="prod_text" type="text" name="text_field" value="{{prod.text}}">
+        <input id="prod_quantity" type="text" name="quantity_field" value="{{prod.quantity}}">
+        <button type="submit" class="btn btn-dark col-2">Обновить информацию о товаре</button>
+    </form>
+
+</center>
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}

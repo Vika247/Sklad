@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Назначение сотрудника на заказ{% endblock %}
+
+{% block header %}
+<center>Назначение сотрудника на заказ № {{ord.id}}</center>
+{% endblock %}
+
+{% block content %}
+<center>
+<form method="POST" action="order">
+   {% csrf_token %}
+   <label for="staff_name">Введите номер сотрудника: </label>
+   <input list="staff_list" id="staff_name" type="text" name="name_field">
+
+    <datalist id="staff_list">
+        {% for st in staf %}
+        {% if st.efficiency == False and st.control == False %}
+           <option value="{{st.user_id}}"/>
+        {% endif %}
+    {% endfor  %}
+    </datalist>
+   <button type="submit" class="btn btn-dark col-2">Назначить</button>
+</form>
+
+
+</center>
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}

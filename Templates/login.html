@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}log{% endblock %}
+
+{% block header %}
+<center>Регистрация</center>
+{% endblock %}
+
+
+{% block content %}
+
+<center>
+    <div>
+        {% if d %}
+            {{d}}
+        {% endif %}
+    </div>
+
+    <div>
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Войти">
+        </form>
+    </div>
+</center>
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Редактировать товар{% endblock %}
+
+{% block header %}
+<center>Редактировать товар</center>
+{% endblock %}
+
+{% block content %}
+<center>
+    <form method="POST" action="update_pastav">
+        {% csrf_token %}
+       <!-- <label for="prod_name">Введите номер сотрудника: </label>-->
+        <input id="prod_company" type="text" name="company_field" value="{{prod.company}}">
+        <input id="prod_number" type="text" name="number_field" value="{{prod.number}}">
+        <input id="prod_email" type="text" name="email_field" value="{{prod.email}}">
+        <button type="submit" class="btn btn-dark col-2">Обновить информацию о товаре</button>
+    </form>
+</center>
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}

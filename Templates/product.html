@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Добавить новый товар{% endblock %}
+
+{% block header %}
+<center>Добавить новый товар</center>
+{% endblock %}
+
+{% block content %}
+<center>
+
+    <form action="{% url 'product' %}" method="post">
+        {% csrf_token %}
+        {{ car_form.as_p }}
+        <input type="submit" value="Ok">
+    </form>
+
+
+    <!--<div>
+        <form method="post" action="{% url 'product' %}">
+            {% csrf_token %}
+            <label for="name">Наименование:</label>
+            <input type="text" id="name" name="name"><br>
+
+            <label for="category">Категория:</label>
+            <input type="text" id="category" name="category"><br>
+
+            <datalist id="category_list">
+                {% for p in prod %}
+            <option value="{{p.category}}"/>
+                {% endfor %}
+            </datalist>
+
+            <label for="text">Информация о товаре:</label>
+            <input type="text" id="text" name="text"><br>
+
+            <label for="quantity">Количество:</label>
+            <input type="text" id="quantity" name="quantity" pattern="^[ 0-9]+$]"><br>
+
+            <label for="condractor_on_stock">Поставщик:</label>
+            <input list="condractor_on_stock_list" type="text" id="condractor_on_stock" name="condractor_on_stock"><br>
+
+            <datalist id="condractor_on_stock_list">
+                {% for ps in p %}
+            <option value="{{ps.company}}"/>
+                {% endfor %}
+            </datalist>
+
+            <input type="submit" value="Ok">
+        </form>
+    </div>-->
+</center>
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}

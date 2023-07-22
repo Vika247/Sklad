@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Заказать на склад{% endblock %}
+
+{% block header %}
+<center>Заказать на склад</center>
+{% endblock %}
+
+{% block content %}
+<center>
+
+  <!--  <form action="{% url 'zakaz_on_skladu' %}" method="post">
+        {% csrf_token %}
+        {{ car_form.as_p }}
+        <input type="submit" value="Ok">
+    </form>-->
+
+    <div>
+        <form method="post" action="{% url 'zakaz_on_skladu' %}">
+            {% csrf_token %}
+            <label for="product">Наименование:</label>
+            <input list="name_list" type="text" id="product" name="product"><br>
+
+            <datalist id="name_list">
+                {% for ps in prod %}
+            <option value="{{ps.name}}"/>
+                {% endfor %}
+            </datalist>
+
+            <label for="quantity">Количество:</label>
+            <input type="text" id="quantity" name="quantity"><br>
+
+            <label for="company">Поставщик:</label>
+            <input list="company_list" type="text" id="company" name="company"><br>
+
+            <datalist id="company_list">
+                {% for c in com %}
+                <option value="{{c.company}}">
+                    {% for p in prod %}
+                        {% if p.condractor_on_stock_id == c.id %}
+                            {{p.name}}
+                        {% endif %}
+                    {% endfor %}
+                </option>
+                {% endfor %}
+            </datalist>
+
+
+
+            <input type="submit" value="Ok">
+        </form>
+    </div>
+
+</center>
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
